@@ -1,3 +1,4 @@
+var hr = "00";
 var min = "00";
 var sec = "00";
 var miliSec = "00";
@@ -19,6 +20,10 @@ function callTimer() {
             else if (sec === 60){
                 sec = "00";
                 min++;
+            }
+            else if (min ===60){
+               min = "00"
+               hr++; 
             }
         }
     }
