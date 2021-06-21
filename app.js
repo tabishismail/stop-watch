@@ -8,33 +8,29 @@ function callTimer() {
     miliSec++;
     if (miliSec <10) {
         miliSec = "0"+ miliSec;
+       
     }
-    else if( miliSec >=10) {
-        if(miliSec<100){    
-            if (miliSec === 99) {
-            miliSec = "00";
-            sec++;
-            if (sec < 10){
-                sec="0"+sec;
+    else if (miliSec >=100){
+        miliSec = "00";
+        sec++;
+        if (sec <10){
+            sec = "0"+sec;
+        }
+        else if (sec ==60){
+            sec = "00";
+            min++;
+            if(min <10){
+                min = "0"+min;
             }
-            else if (sec === 60){
-                sec = "00";
-                min++;
-            }
-            else if (min ===60){
-               min = "00"
-               hr++; 
+            else if(min ==60){
+                min = "00";
+                hr++;
             }
         }
     }
+    document.getElementById("display").innerHTML =hr +":" + min + ":" +sec + ":" +miliSec;
 
-    }
-    else{
-        miliSec = "00";
-    }
-    document.getElementById("display").innerHTML = min + ":" +sec + ":" +miliSec;
 }
-
 
 function start() {
     document.getElementById("start").disabled = true;
@@ -48,8 +44,9 @@ function stop() {
 
 function reset() {
     stop();
+    hr="00";
     min = "00";
     sec = "00";
     miliSec = "00";
-    document.getElementById("display").innerHTML = min + ":" + sec + ":" + miliSec;
+    document.getElementById("display").innerHTML = hr+":"+ min + ":" + sec + ":" + miliSec;
 }
